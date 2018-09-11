@@ -1,0 +1,79 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 12, 2018, 12:10:46 AM
+    Author     : chankevin
+*/
+
+body {
+    margin:0px auto;
+}
+
+
+
+.main_container{
+    margin: 0px auto;
+    background-color:activeborder;
+    
+}
+
+.form{
+    margin: auto;
+    width: 50%;
+    background-color:bisque;
+    padding-bottom: 10px;
+    
+    
+}
+
+
+
+.row{
+    width: 100%;
+    padding: 15px;
+}
+.text_static{
+   float: left;
+   width:30%;
+}
+
+.text_field{
+   float: left;
+   width:70%;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    
+    .main_container{
+    margin: 0px auto;
+    width: 100%;
+  
+    }
+
+
+    .form{
+       margin: auto;
+       width: 100%;
+       background-color:bisque;
+       padding-bottom: 10px;
+
+   }   
+
+   .text_static{
+      width:100%;
+   }
+
+   .text_field{
+      width:100%;
+   }
+
+   .login_button{
+       text-align: middle;
+   }
+
+}
