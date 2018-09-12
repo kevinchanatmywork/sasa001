@@ -18,20 +18,20 @@
         
     <div class="row">
         <div class="text_static">Name</div>
-        <div class="text_field"><input type="text" name="user_name" style="width:80%;"  value="<?php if(isset($_POST['user_name'])) echo $_POST['user_name'];  ?>"/></div>
+        <div class="text_field"><input type="text" name="user_name" maxlength="40" style="width:80%;"  value="<?php if(isset($_POST['user_name'])) echo $_POST['user_name'];  ?>"/></div>
     </div>
     <div class="row">
         <div class="text_static">Email</div>
-        <div class="text_field"><input type="text" name="email" style="width:80%;" placeholder="eg: apple@abc.com" value="<?php if(isset($_POST['email'])) echo $_POST['email'];  ?>" /></div>
+        <div class="text_field"><input type="text" name="email" maxlength="40" style="width:80%;" placeholder="eg: apple@abc.com" value="<?php if(isset($_POST['email'])) echo $_POST['email'];  ?>" /></div>
     </div>
     
     <div class="row">
         <div class="text_static">Mobile</div>
-        <div class="text_field"><input type="text" name="mobile" style="width:80%;" placeholder="8 Digit Mobile Number" value="<?php if(isset($_POST['mobile'])) echo $_POST['mobile']; ?>"/></div>
+        <div class="text_field"><input type="text" name="mobile" maxlength="8" style="width:80%;"  placeholder="8 Digit Mobile Number" value="<?php if(isset($_POST['mobile'])) echo $_POST['mobile']; ?>"/></div>
     </div>
     <div class="row">
         <div class="text_static">Password</div>
-        <div class="text_field"><input type="text" name="password" style="width:80%;" value="<?php if(isset($_POST['password'])) echo $_POST['password'];  ?>" /></div>
+        <div class="text_field"><input type="text" name="password" maxlength="16" style="width:80%;"  value="<?php if(isset($_POST['password'])) echo $_POST['password'];  ?>" /></div>
     </div>
      <div class="row">
         <div class="text_static">Date of Birth</div>

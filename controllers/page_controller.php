@@ -1,21 +1,20 @@
 <?php
         // put your code here
-        include_once("models/model.php");  
+        include_once("models/validate.php");  
+        include_once("models/users.php");  
   
 class Page_Controller {  
-     public $model;   
+     public $validate;   
+     public $user;
   
      public function __construct()    
      {    
-          $this->model = new Model();  
+          $this->validate = new Validate();  
+            $this->user = new users();
      }   
       
      public function invoke()  
      {  
-         
-         
-        
-         
         $page='';
         $action='';
         $error_msg='';
@@ -26,12 +25,40 @@ class Page_Controller {
             $action=$_POST['action'];
         }
         
+        
+        
         if ($page == 'create_account' && $action=='submit'){
-            $error_msg = $this->model->validate_create_user($_POST['user_name'], $_POST['email'], $_POST['mobile'], $_POST['password'], $_POST['dob']);
-            
+            $error_msg = $this->validate->validate_create_user($_POST['user_name'], $_POST['email'], $_POST['mobile'], $_POST['password'], $_POST['dob']);
+            if($error_msg == ""){
+              
+                $search_user_result = $this->user->search_user($_POST['email']);
+                if(sizeof($search_user_result)>0){
+                    $error_msg.='Email exists in our database';
+                }
+                if ($error_msg == ""){
+                $this->user->create_user($_POST['user_name'], $_POST['email'], $_POST['mobile'], $_POST['password'], $_POST['dob']);   
+                $page='create_successful';
+                }
+            }
         }
         
-        echo $error_msg;
+        if ($page == 'login'){
+            
+            $auth_result = $this->user->search_user($_POST['email']);
+            if (sizeof($auth_result)<=0){
+                $error_msg.='please input correct username';
+                $page='main';   
+            } else{
+                if( password_verify($_POST['password'], $auth_result[0]['password']) == FALSE ){
+                    $error_msg.='please input correct password.';
+                    $page='main';   
+                }
+                
+                
+                
+                
+            }
+        }
          include 'views/header.php';
         
         switch ($page) {
@@ -39,27 +66,11 @@ class Page_Controller {
                 break;
             case "create_account"       : include 'views/create_account.php';                
                 break;
+            case "create_successful"    : include 'views/create_successful.php';                
+                break;
             default                     : include 'views/login_form.php';
         }
-            
-        
-        
-        
-        include 'views/footer.php';
-         /*
-          if (!isset($_GET['page']))  
-          {  
-               // no special book is requested, we'll show a list of all available books  
-               $books = $this->model->getBookList();  
-               include 'views/booklist.php'; 
-          } 
-          else 
-          { 
-               // show the requested book 
-               $book = $this->model->getBook($_GET['book']); 
-               include 'views/viewbook.php';  
-          }
-          */
+         include 'views/footer.php';
      }  
 }  
 ?>
