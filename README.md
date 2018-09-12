@@ -32,7 +32,7 @@ define('DB_PW','root');
 define('DB_SCHEMA','sasa_db');
 
 
-2. run following sql in database to insert user table.
+2. run following sql ( also attach file as Dump20180913.sql)in database to insert user table.
 
 
 
