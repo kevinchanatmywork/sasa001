@@ -10,16 +10,16 @@ class users {
     public $date_of_birth;
      
       
-    public function __construct($username, $email, $mobile, $password, $date_of_birth )    
+    public function __construct(/*$username, $email, $mobile, $password, $date_of_birth*/ )    
     {    
         
          
         
-        $this->username = $username;  
-        $this->email = $email;  
-        $this->mobile = $mobile;
-        $this->password = $password;  
-        $this->date_of_birth = date('Y-m-d', strtotime($date_of_birth));  
+       // $this->username = $username;  
+       // $this->email = $email;  
+       // $this->mobile = $mobile;
+       // $this->password = $password;  
+       // $this->date_of_birth = date('Y-m-d', strtotime($date_of_birth));  
         $this->db = new DBModel();
         $this->db->connectDB();
         

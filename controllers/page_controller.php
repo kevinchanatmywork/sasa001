@@ -10,7 +10,7 @@ class Page_Controller {
      public function __construct()    
      {    
           $this->validate = new Validate();  
-            $this->user = new users();
+          $this->user = new users();
      }   
       
      public function invoke()  
